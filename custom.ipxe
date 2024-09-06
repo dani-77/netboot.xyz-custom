@@ -19,10 +19,10 @@ goto ${custom_choice}
 goto custom_exit
 
 :option_one
-chain -a http://boot.selstar.sk/menu.ipxe || goto custom_exit
+chain -a http://boot.selstar.sk/ipxe/ipxe.lkrn || goto custom_exit
 
 :option_two
-chain -a http://boot.netboot.xyz || goto custom_exit
+chain -a http://boot.netboot.xyz/ipxe/neboot.xyz.lkrn || goto custom_exit
 
 :option_three
 kernel https://boot.netboot.xyz/memdisk raw iso
