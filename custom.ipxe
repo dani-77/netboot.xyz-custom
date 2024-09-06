@@ -3,10 +3,43 @@
 ### netboot.xyz-custom menu
 ###
 
-:start
-echo Hello world!
-sleep 10
+:custom
+clear custom_choice
+menu dani-77's Custom Menu
+item --gap Load another menu
+item option_one ${space} selstar menu
+item option_two ${space} netboot menu
+item option_two ${space} Loading an ISO
+item --gap ISO's
+item option_three ${space} CRUX
+item option_four ${space} Venom wayland
+item option_five ${space} Venom xorg
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
 goto custom_exit
 
+:option_one
+chain -a http://boot.selstar.sk/menu.ipxe || goto custom_exit
+
+:option_two
+chain -a http://boot.netboot.xyz || goto custom_exit
+
+:option_three
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://crux.ninja/updated-iso/crux-3.7-updated.iso
+boot || goto custom_exit
+
+:option_four
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://nc.abetech.es/index.php/s/n96mosgP9p8dzEX/download?path=%2F&files=venomlinux-wayland-sysv-x86_64-20240806.iso
+boot || goto custom_exit
+
+:option_five
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://nc.abetech.es/index.php/s/n96mosgP9p8dzEX/download?path=%2F&files=venomlinux-xorg-sysv-x86_64-20240806.iso
+boot || goto custom_exit
+
 :custom_exit
-exit 0
+chain utils.ipxe
+exit
