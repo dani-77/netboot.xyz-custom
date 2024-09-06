@@ -9,7 +9,6 @@ menu dani-77's Custom Menu
 item --gap Load another menu
 item option_one ${space} selstar menu
 item option_two ${space} netboot menu
-item option_two ${space} Loading an ISO
 item --gap ISO's
 item option_three ${space} CRUX
 item option_four ${space} Venom wayland
